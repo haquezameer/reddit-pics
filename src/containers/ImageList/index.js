@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import CardImage from '../../components/CardImage';
 
 class ImageList extends React.Component {
@@ -11,8 +13,8 @@ class ImageList extends React.Component {
         }
     }
 
-    static getDerivedStateFromProps(props,state) {
-        if(props.data) {
+    static getDerivedStateFromProps(props, state) {
+        if (props.data) {
             return {
                 allImages: props.data
             }
@@ -36,12 +38,12 @@ class ImageList extends React.Component {
     }
 
     renderImageList() {
-        const {allImages,filteredImages,filterTitle} = this.state;
-        const {setCurrentlySelectedImage} = this.props;
-        const dataList =  filterTitle ? filteredImages : allImages;
+        const { allImages, filteredImages, filterTitle } = this.state;
+        const { setCurrentlySelectedImage } = this.props;
+        const dataList = filterTitle ? filteredImages : allImages;
         const isDataListEmpty = dataList.length === 0;
-        
-        if(isDataListEmpty) {
+
+        if (isDataListEmpty) {
             return <div>Sorry! Nothing to show</div>
         }
 
@@ -53,7 +55,7 @@ class ImageList extends React.Component {
                 flexWrap: 'wrap',
                 justifyContent: 'space-around'
             }}>
-                {dataList ? dataList.map(item => <CardImage imageSrc={item.thumbnail} title={item.title} handleClick={() => setCurrentlySelectedImage(item)} />) : 'Loading...'}
+                {dataList.map(item => <Link to="/image/detail"><CardImage imageSrc={item.thumbnail} title={item.title} handleClick={() => setCurrentlySelectedImage(item)} /></Link>)}
             </div>
         );
     }
