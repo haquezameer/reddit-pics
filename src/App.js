@@ -9,6 +9,7 @@ const ImageURLRegex = /(jpg|png)/g;
 class App extends React.Component {
   state = {
     data: null,
+    currentlySelectedImage: {}
   };
 
   componentDidMount() {
@@ -20,12 +21,19 @@ class App extends React.Component {
     const imageList = processedImages.map(image => image.data);
     this.setState({data: imageList});
   }
+
+  setCurrentlySelectedImage = (image) => {
+    console.log(image);
+    this.setState({
+      currentlySelectedImage: image
+    });
+  }
   
   render() {
     const {data} = this.state;
     return (
       <div className="App">
-        {data ? <ImageList data={data} /> : <div>Loading...</div>}
+        {data ? <ImageList data={data} setCurrentlySelectedImage={this.setCurrentlySelectedImage} /> : <div>Loading...</div>}
       </div>
     );
   }

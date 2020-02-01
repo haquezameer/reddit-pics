@@ -32,14 +32,12 @@ class ImageList extends React.Component {
         const { filterTitle } = this.state;
         const { allImages } = this.state;
         const filteredImages = allImages.filter(item => item.title.includes(filterTitle));
-        console.log('allImage',allImages);
-        console.log('filtertitle',filterTitle);
-        console.log('filteredImages -------->>', filteredImages);
         this.setState({ filteredImages });
     }
 
     renderImageList() {
         const {allImages,filteredImages,filterTitle} = this.state;
+        const {setCurrentlySelectedImage} = this.props;
         const dataList =  filterTitle ? filteredImages : allImages;
         const isDataListEmpty = dataList.length === 0;
         
@@ -55,7 +53,7 @@ class ImageList extends React.Component {
                 flexWrap: 'wrap',
                 justifyContent: 'space-around'
             }}>
-                {dataList ? dataList.map(item => <CardImage title={item.title} />) : 'Loading...'}
+                {dataList ? dataList.map(item => <CardImage imageSrc={item.thumbnail} title={item.title} handleClick={() => setCurrentlySelectedImage(item)} />) : 'Loading...'}
             </div>
         );
     }
