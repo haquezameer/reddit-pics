@@ -33,7 +33,7 @@ class ImageList extends React.Component {
     filterByTitle = () => {
         const { filterTitle } = this.state;
         const { allImages } = this.state;
-        const filteredImages = allImages.filter(item => item.title.includes(filterTitle));
+        const filteredImages = allImages.filter(item => item.title.toLowerCase().includes(filterTitle.toLowerCase()));
         this.setState({ filteredImages });
     }
 

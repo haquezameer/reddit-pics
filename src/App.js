@@ -8,6 +8,8 @@ import {
 import ImageList from './containers/ImageList';
 import ImageDetail from './containers/ImageDetail';
 
+import HTTP from './utils/http';
+
 import './App.css';
 
 const ImageURLRegex = /(jpg|png)/g;
@@ -19,7 +21,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    fetch('https://www.reddit.com/r/pics/.json?jsonp=').then(res => res.json()).then(res => this.processImages(res.data));
+    HTTP.get('https://www.reddit.com/r/pics/.json?jsonp=').then(res => this.processImages(res.data));
   }
 
   processImages = (data) => {
