@@ -12,7 +12,7 @@ class ImageDetail extends React.Component {
                 alignItems: 'center',
                 margin: '10px auto'
             }}>
-                <img src={currentlySelectedImage.url} style={{width: '700px', height: '500px', objectFit: 'contain'}} />
+                <img src={currentlySelectedImage.url} style={{width: '700px', maxWidth: '90%', height: '500px', objectFit: 'contain'}} />
                 <h2>{currentlySelectedImage.title}</h2>
                 <h3>Author: {currentlySelectedImage.author}</h3>
                 <h3>Score: {currentlySelectedImage.score}</h3>
