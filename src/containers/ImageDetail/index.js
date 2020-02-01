@@ -15,6 +15,8 @@ class ImageDetail extends React.Component {
                 <img src={currentlySelectedImage.url} style={{width: '700px', height: '500px', objectFit: 'contain'}} />
                 <h2>{currentlySelectedImage.title}</h2>
                 <h3>Author: {currentlySelectedImage.author}</h3>
+                <h3>Score: {currentlySelectedImage.score}</h3>
+                <a target="_blank" href={`https://www.reddit.com${currentlySelectedImage.permalink}`}>View on Reddit</a>
             </div>
         );
     }
