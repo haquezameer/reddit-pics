@@ -1,8 +1,8 @@
 import React from 'react';
 
 
-const Cart = ({style,children,handleClick}) => (
-    <div style={style} onClick={handleClick}>
+const Cart = ({style,children}) => (
+    <div style={style}>
         {children}
     </div>
 );

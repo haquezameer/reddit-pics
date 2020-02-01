@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import CardImage from '../../components/CardImage';
+import ImageCard from '../../components/ImageCard';
 
 class ImageList extends React.Component {
     constructor(props) {
@@ -55,7 +55,11 @@ class ImageList extends React.Component {
                 flexWrap: 'wrap',
                 justifyContent: 'space-around'
             }}>
-                {dataList.map(item => <Link to="/image/detail"><CardImage imageSrc={item.thumbnail} title={item.title} handleClick={() => setCurrentlySelectedImage(item)} /></Link>)}
+                {dataList.map(item =>
+                    <Link to="/image/detail" onClick={() => setCurrentlySelectedImage(item)}>
+                        <ImageCard imageSrc={item.thumbnail} title={item.title} />
+                    </Link>
+                )}
             </div>
         );
     }
@@ -65,7 +69,9 @@ class ImageList extends React.Component {
         return (
             <>
                 <div>
-                    <input type="text" onChange={this.handleFilterChange} value={filterTitle} />
+                    <input style={{
+                        marginTop: 10
+                    }} type="text" onChange={this.handleFilterChange} value={filterTitle} />
                 </div>
                 {this.renderImageList()}
             </>
