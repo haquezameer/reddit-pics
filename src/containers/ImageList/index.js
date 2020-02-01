@@ -66,7 +66,6 @@ class ImageList extends React.Component {
             <>
                 <div>
                     <input type="text" onChange={this.handleFilterChange} value={filterTitle} />
-                    <button onClick={this.filterByTitle}>Search</button>
                 </div>
                 {this.renderImageList()}
             </>
